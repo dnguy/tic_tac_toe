@@ -62,13 +62,10 @@
         var h1 = $('<h1>').css('color', 'black').html('X is the winner!');
         var h2 = $('<h1>').css('color', 'black').html('O is the winner!');
         var h3 = $('<h1>').css('color', 'black').html('Looks like we have a tie!');
-        var button = $('<button>').addClass('close').attr({
-            type: "button",
-            data_dismiss: "modal"
-        }).html('&times;');
+        var button = $('<button>').css('background','black').text('Try Again');
         var modal_body = $('<div>').addClass('modal-body');
         var img = $('<img>').attr('src', 'images/homer.jpg');
-        var img2= $('<img>').attr('src', 'images/bart_tie.jpg')
+        var img2= $('<img>').attr('src', 'images/bart_tie.png')
 
         $(modal_body).append(img);
         $(modal_header).append(h1, button);
@@ -83,7 +80,7 @@
         $(player_container).append(player1, player2);
         $(players_main).append(player_container);
 
-
+        $('button').on('click',game_reset);
 
         var turnCount = 0;
         var gb = ['', '', '', '', '', '', '', '', ''];
@@ -133,7 +130,11 @@
             for (i = 0; i < wc.length; i++) {
                 if (gb[wc[i][0]] == '' && gb[wc[i][1]] == '' && gb[wc[i][2]] == '') {
                     return;
-                } else if (gb[wc[i][0]] == gb[wc[i][1]] && gb[wc[i][1]] == gb[wc[i][2]]) {
+                    
+                } 
+                console.log(gb[wc[i][0]] +'=='+ gb[wc[i][1]] +'&&'+ gb[wc[i][1]] +'=='+ gb[wc[i][2]])
+                if (gb[wc[i][0]] == gb[wc[i][1]] && gb[wc[i][1]] == gb[wc[i][2]]) {
+
                     if(gb[wc[i][0]] == 'O'){
                         $(h1).remove();
                         $(modal_header).append(h2);
@@ -142,9 +143,7 @@
 
                     $('#myModal').modal('show');
                     $('.game-square').off('click');
-                    setTimeout(function() {
-                        game_reset();
-                    }, 3000);
+                    return;
 
                 } else if (turnCount == 9 && gb[wc[i][0]] != gb[wc[i][1]] && gb[wc[i][1]] != gb[wc[i][2]]) {
                     $(img).remove();
@@ -153,9 +152,6 @@
                     $(modal_header).append(h3)
                     $('#myModal').modal('show');
                     $('.game-square').off('click');
-                    setTimeout(function() {
-                        game_reset();
-                    }, 3000);
                     return;
                 }
 
