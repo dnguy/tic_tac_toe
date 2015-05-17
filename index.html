@@ -15,39 +15,7 @@
         var game = $('<div>').addClass('game col-sm-10 col-sm-offset-1');
         //var img = $('<img>').attr('src', 'images/bart.png')
         var title = $('<div>').addClass('title col-sm-12').text('Tic-Tac-Toe');
-        var game_square1 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'topleft',
-            square_number: 0
-        });
-        var game_square2 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'topmiddle',
-            square_number: 1
-        });
-        var game_square3 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'topright',
-            square_number: 2
-        });
-        var game_square4 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'middleleft',
-            square_number: 3
-        });
-        var game_square5 = $('<div>').addClass('game-square col-sm-4').attr('square_number', 4);
-        var game_square6 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'middleright',
-            square_number: 5
-        });
-        var game_square7 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'bottomleft',
-            square_number: 6
-        });
-        var game_square8 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'bottommiddle',
-            square_number: 7
-        });
-        var game_square9 = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'bottomright',
-            square_number: 8
-        });
+
         var players_main = $('<div>').addClass('players-main col-sm-4')
         var player_container = $('<div>').addClass('players-container col-sm-8 col-sm-offset-2');
         var player1 = $('<div>').addClass('players col-sm-12').attr('id', 'player1').text('Player 1');
@@ -76,7 +44,16 @@
         $('body').append(chalkboard, modal);
         $(chalkboard).append(game_main, players_main);
         $(game_main).append(game);
-        $(game).append(title, game_square1, game_square2, game_square3, game_square4, game_square5, game_square6, game_square7, game_square8, game_square9);
+        $(game).append(title)
+        for(var i = 0; i<9; i++){
+
+            var game_square = $('<div>').addClass('game-square col-sm-4').attr({
+            id: 'square_number' + i,
+            square_number: i
+        });
+            $(game).append(game_square);
+            
+        }
         $(player_container).append(player1, player2);
         $(players_main).append(player_container);
 
@@ -167,44 +144,6 @@
 </head>
 
 <body>
-
-    <!-- <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 style="color: black">We have a winner!</h1>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <img src="images/homer.jpg">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> -->
-     <!-- <div class="chalkboard">
-        <div class="game-main col-sm-8">
-            <div class="game col-sm-10 col-sm-offset-1">
-                <div class="title col-sm-12">Tic-Tac-Toe</div>
-                <div class="game-square col-sm-4" id="topleft"></div>
-                <div class="game-square col-sm-4" id="topmiddle"></div>
-                <div class="game-square col-sm-4" id="topright"></div>
-                <div class="game-square col-sm-4" id="middleleft"></div>
-                <div class="game-square col-sm-4"></div>
-                <div class="game-square col-sm-4" id="middleright"></div>
-                <div class="game-square col-sm-4" id="bottomleft"></div>
-                <div class="game-square col-sm-4" id="bottommiddle"></div>
-                <div class="game-square col-sm-4" id="bottomright"></div>
-            </div>
-        </div>
-        <div class="players-main col-sm-4">
-            <div class="players-container col-sm-8 col-sm-offset-2" >
-                <div class="players col-sm-12" id="player1">Player 1</div>
-                <div class="players col-sm-12" id="player2">Player 2</div>
-            </div>
-            <img class="bart" src="images/bart.png">
-        </div>
-    </div> -->
 </body>
 
 </html>

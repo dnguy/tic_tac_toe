@@ -56,32 +56,32 @@ img {
 	border: 1px solid white;
 	border-radius: 10px;
 }
-#topleft {
+#square_number0 {
 	border-top: none;
 	border-left: none;
 }
-#topmiddle{
+#square_number1{
 	border-top: none;
 	text-align:center;
 }
-#topright {
+#square_number2 {
 	border-top: none;
 	border-right:none;
 }
-#middleleft {
+#square_number3 {
 	border-left: none;
 }
-#middleright {
+#square_number5 {
 	border-right:none;
 }
-#bottomleft {
+#square_number6 {
 	border-left:none;
 	border-bottom:none;
 }
-#bottommiddle {
+#square_number7 {
 	border-bottom:none;
 }
-#bottomright {
+#square_number8 {
 	border-right:none;
 	border-bottom:none;
 }
