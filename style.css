@@ -1,3 +1,6 @@
+body{
+	background-image: url(images/homer_background.jpeg);
+}
 @font-face {
 	font-family:chalkFont;
 	src:url(fonts/EraserRegular.ttf);
@@ -8,8 +11,8 @@
 }
 .chalkboard {
 	height:1024px;
-	width:768px;
-	background-image:url(images/chalkboard.jpg);
+	width:830px;
+	background-image:url(images/chalkboard2.png);
 	background-repeat:no-repeat;
 	background-size:100%;
 }
@@ -84,4 +87,31 @@ img {
 #square_number8 {
 	border-right:none;
 	border-bottom:none;
+}
+.eye1 {
+	  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 69%;
+  top: 45%;
+}
+.eye2{
+	position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 72%;
+  top: 48%;
+}
+.eye1 > div {
+width: 7px;
+  height: 7px;
+  background: black;
+  border-radius: 50%;
+}
+.eye2 > div {
+width: 7px;
+  height: 7px;
+  background: black;
+  border-radius: 50%;
+}
 }

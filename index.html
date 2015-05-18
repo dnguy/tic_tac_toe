@@ -10,7 +10,7 @@
     <script>
     $(document).ready(function generate_game_board() {
 
-        var chalkboard = $('<div>').addClass('chalkboard');
+        var chalkboard = $('<div>').addClass('chalkboard col-sm-8 col-sm-offset-2');
         var game_main = $('<div>').addClass('game-main col-sm-8');
         var game = $('<div>').addClass('game col-sm-10 col-sm-offset-1');
         //var img = $('<img>').attr('src', 'images/bart.png')
@@ -30,10 +30,10 @@
         var h1 = $('<h1>').css('color', 'black').html('X is the winner!');
         var h2 = $('<h1>').css('color', 'black').html('O is the winner!');
         var h3 = $('<h1>').css('color', 'black').html('Looks like we have a tie!');
-        var button = $('<button>').css('background','black').text('Try Again');
+        var button = $('<button>').css('background', 'black').text('Try Again');
         var modal_body = $('<div>').addClass('modal-body');
         var img = $('<img>').attr('src', 'images/homer.jpg');
-        var img2= $('<img>').attr('src', 'images/bart_tie.png')
+        var img2 = $('<img>').attr('src', 'images/bart_tie.png')
 
         $(modal_body).append(img);
         $(modal_header).append(h1, button);
@@ -45,19 +45,19 @@
         $(chalkboard).append(game_main, players_main);
         $(game_main).append(game);
         $(game).append(title)
-        for(var i = 0; i<9; i++){
+        for (var i = 0; i < 9; i++) {
 
             var game_square = $('<div>').addClass('game-square col-sm-4').attr({
-            id: 'square_number' + i,
-            square_number: i
-        });
+                id: 'square_number' + i,
+                square_number: i
+            });
             $(game).append(game_square);
-            
+
         }
         $(player_container).append(player1, player2);
         $(players_main).append(player_container);
 
-        $('button').on('click',game_reset);
+        $('button').on('click', game_reset);
 
         var turnCount = 0;
         var gb = ['', '', '', '', '', '', '', '', ''];
@@ -107,19 +107,22 @@
             for (i = 0; i < wc.length; i++) {
                 if (gb[wc[i][0]] == '' && gb[wc[i][1]] == '' && gb[wc[i][2]] == '') {
                     return;
-                    
-                } 
-                console.log(gb[wc[i][0]] +'=='+ gb[wc[i][1]] +'&&'+ gb[wc[i][1]] +'=='+ gb[wc[i][2]])
+
+                }
+                console.log(gb[wc[i][0]] + '==' + gb[wc[i][1]] + '&&' + gb[wc[i][1]] + '==' + gb[wc[i][2]])
                 if (gb[wc[i][0]] == gb[wc[i][1]] && gb[wc[i][1]] == gb[wc[i][2]]) {
 
-                    if(gb[wc[i][0]] == 'O'){
+                    if (gb[wc[i][0]] == 'O') {
                         $(h1).remove();
                         $(modal_header).append(h2);
                     }
 
 
                     $('#myModal').modal('show');
-                    $('.game-square').off('click');
+                    setTimeout(function(){
+                    $('body').one('click', game_reset)
+                }, 1000);
+                    console.log('there was a winner')
                     return;
 
                 } else if (turnCount == 9 && gb[wc[i][0]] != gb[wc[i][1]] && gb[wc[i][1]] != gb[wc[i][2]]) {
@@ -128,7 +131,9 @@
                     $(modal_body).append(img2);
                     $(modal_header).append(h3)
                     $('#myModal').modal('show');
-                    $('.game-square').off('click');
+                    setTimeout(function(){
+                    $('body').one('click', game_reset)
+                }, 1000);
                     return;
                 }
 
@@ -139,7 +144,6 @@
 
 
     });
-  
     </script>
 </head>
 
